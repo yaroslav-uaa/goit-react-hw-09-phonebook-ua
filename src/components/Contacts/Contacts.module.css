@@ -1,0 +1,16 @@
+.link {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.btnContainer {
+  display: flex;
+}
+
+.editInput {
+  width: 20%;
+  min-width: 100px;
+}

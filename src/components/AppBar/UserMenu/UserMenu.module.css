@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  margin-right: 4px;
+}
+
+.name {
+  font-weight: 500;
+  margin-right: 12px;
+}
+
+.btn {
+  margin-right: 8px;
+}

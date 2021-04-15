@@ -1,77 +1,76 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { getContacts } from '../../redux/contacts/contacts-selectors';
 import { addContact } from '../../redux/contacts/contacts-operations';
 import f from './Form.module.css';
 import PropTypes from 'prop-types';
 
-export class Form extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
+const Form = ({ onSubmit, contacts }) => {
+  const [nameUnit, setName] = useState('');
+  const [numberUnit, setNumber] = useState('');
 
-  handleSubmit = e => {
-    const { onSubmit, contacts } = this.props;
-    e.preventDefault();
+  const handleSubmit = ({ name, number }) => {
     const originName = contacts.find(
-      ({ name }) => name.toLowerCase() === this.state.name.toLowerCase(),
+      contact => contact.name.toLowerCase() === name.toLowerCase(),
     );
-    const originNumber = contacts.find(
-      ({ number }) => number === this.state.number,
-    );
+    const originNumber = contacts.find(contact => contact.number === number);
     if (originName) {
-      alert(`${this.state.name} is already used`);
+      alert(`${name} is already used`);
       return;
     }
     if (originNumber) {
-      alert(`${this.state.number} is already used`);
+      alert(`${number} is already used`);
       return;
     }
-    onSubmit({ ...this.state });
+    onSubmit({ name, number });
+    setName('');
+    setNumber('');
   };
 
-  handleNameChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
+  const handleNameChange = ({ target: { name, value } }) => {
+    name === 'name' ? setName(value) : setNumber(value);
   };
 
-  render() {
-    const { name, number } = this.state;
-    return (
-      <form className={f.form} onSubmit={this.handleSubmit}>
-        <label className={f.label}>
-          Name
-          <input
-            type="text"
-            name="name"
-            value={name}
-            placeholder="Enter your name"
-            onChange={this.handleNameChange}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Ім'я може містити тільки букви, апострофи, тире і пробіли. Наприклад Буся, Буся Красотуся, Буся ля Красотуся і т.д."
-            required
-          />
-        </label>
-        <label className={f.label}>
-          Number
-          <input
-            type="tel"
-            name="number"
-            value={number}
-            placeholder="Enter your number"
-            onChange={this.handleNameChange}
-            pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
-            title="Номер телефона повинен складатися з 11-12 цифр і може містити цифри, пробіли, тире, пузаті скобки і може починатися з +"
-            required
-          />
-        </label>
-        <button type="submit" className={f.btn}>
-          Add contact
-        </button>
-      </form>
-    );
-  }
-}
+  return (
+    <form
+      className={f.form}
+      onSubmit={e => {
+        e.preventDefault();
+        handleSubmit({ name: nameUnit, number: numberUnit });
+      }}
+    >
+      <label className={f.label}>
+        Name
+        <input
+          type="text"
+          name="name"
+          value={nameUnit}
+          placeholder="Enter your name"
+          onChange={handleNameChange}
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Ім'я може містити тільки букви, апострофи, тире і пробіли. Наприклад Буся, Буся Красотуся, Буся ля Красотуся і т.д."
+          required
+        />
+      </label>
+      <label className={f.label}>
+        Number
+        <input
+          type="tel"
+          name="number"
+          value={numberUnit}
+          placeholder="Enter your number"
+          onChange={handleNameChange}
+          pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
+          title="Номер телефона повинен складатися з 11-12 цифр і може містити цифри, пробіли, тире, пузаті скобки і може починатися з +"
+          required
+        />
+      </label>
+      <button type="submit" className={f.btn}>
+        Add contact
+      </button>
+    </form>
+  );
+};
 
 Form.propTypes = {
   onSubmit: PropTypes.func,

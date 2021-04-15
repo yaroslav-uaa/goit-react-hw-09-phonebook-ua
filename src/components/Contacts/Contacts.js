@@ -76,7 +76,9 @@ const Contacts = ({
                 <input
                   className={c.editInput}
                   value={unitName}
-                  onChange={event => setUnitName(event.target.value)}
+                  onChange={event => {
+                    setUnitName(event.target.value);
+                  }}
                   type="text"
                   name="name"
                   placeholder="Name"

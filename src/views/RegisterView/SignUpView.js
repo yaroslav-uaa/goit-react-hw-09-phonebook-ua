@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useCallback, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -59,7 +59,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SignUpSide = ({ onSubmit }) => {
+export default function SignUpSide() {
+  const dispatch = useDispatch();
+
+  const onSubmit = useCallback(
+    ({ name, email, password }) => {
+      dispatch(authOperations.register({ name, email, password }));
+    },
+    [dispatch],
+  );
+
   const classes = useStyles();
 
   const [unitName, setName] = useState('');
@@ -153,10 +162,10 @@ const SignUpSide = ({ onSubmit }) => {
       </Grid>
     </Grid>
   );
-};
+}
 
-const mapDispatchToProps = {
-  onSubmit: authOperations.register,
-};
+// const mapDispatchToProps = {
+//   onSubmit: authOperations.register,
+// };
 
-export default connect(null, mapDispatchToProps)(SignUpSide);
+// export default connect(null, mapDispatchToProps)(SignUpSide);

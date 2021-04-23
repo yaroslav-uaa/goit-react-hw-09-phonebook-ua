@@ -1,5 +1,11 @@
+.navigation {
+  display: flex;
+  align-items: center;
+}
 .link {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
   text-decoration: none;
   padding: 12px;
   font-weight: 700;

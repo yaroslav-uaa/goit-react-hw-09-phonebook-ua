@@ -12,5 +12,15 @@
 }
 
 .btn {
-  width: 100px;
+  width: 50px;
+  color: #e84a5f;
+}
+
+.btn:hover,
+.btn:focus {
+  color: black;
+}
+
+.MuiTextField-root {
+  color: #e84a5f;
 }

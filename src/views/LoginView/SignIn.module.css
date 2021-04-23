@@ -1,0 +1,11 @@
+.link {
+  text-decoration: none;
+  font-weight: 700;
+  color: #424040;
+  transition: all 200ms ease;
+}
+
+.link:hover,
+.link:focus {
+  color: #fa0021;
+}

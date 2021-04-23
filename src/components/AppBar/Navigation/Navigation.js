@@ -1,29 +1,38 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
 import authSelectors from '../../../redux/auth/auth-selectors';
+import Filter from '../../Filter/Filter';
 import n from './Navigation.module.css';
 
-const Navigation = ({ isAuthenticated }) => (
-  <nav>
-    <NavLink to="/" exact className={n.link} activeClassName={n.activeLink}>
-      Главная
-    </NavLink>
-    {isAuthenticated && (
-      <NavLink
-        to="/contacts"
-        exact
-        className={n.link}
-        activeClassName={n.activeLink}
-      >
-        Контакти
+export default function Navigation() {
+  const location = useLocation();
+  const isLogIn = useSelector(authSelectors.getIsLoggedIn);
+
+  return (
+    <nav className={n.navigation}>
+      <NavLink to="/" exact className={n.link} activeClassName={n.activeLink}>
+        Главная
       </NavLink>
-    )}
-  </nav>
-);
+      {isLogIn && (
+        <>
+          <NavLink
+            to="/contacts"
+            exact
+            className={n.link}
+            activeClassName={n.activeLink}
+          >
+            Контакти
+          </NavLink>
+        </>
+      )}
+      {location.pathname === '/contacts' && <Filter />}
+    </nav>
+  );
+}
 
-const mapStateToProps = state => ({
-  isAuthenticated: authSelectors.getIsLoggedIn(state),
-});
+// const mapStateToProps = state => ({
+//   isLogIn: authSelectors.getIsLoggedIn(state),
+// });
 
-export default connect(mapStateToProps, null)(Navigation);
+// export default connect(mapStateToProps, null)(Navigation);

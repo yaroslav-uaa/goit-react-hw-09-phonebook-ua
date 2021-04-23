@@ -1,10 +1,9 @@
-import { connect } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useCallback, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -13,19 +12,10 @@ import Typography from '@material-ui/core/Typography';
 import authOperations from '../../redux/auth/auth-operations';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
+import InputPassword from '../../components/Form/InputPassword/InputPassword';
+import Copyright from '../../components/Copyright/Copyright';
+import s from './SignIn.module.css';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/yaroslav-uaa">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100vh',
@@ -60,7 +50,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SignInSide = ({ onLogin }) => {
+export default function SignInSide() {
+  const dispatch = useDispatch();
+
+  const onLogin = useCallback(
+    ({ email, password }) => {
+      dispatch(authOperations.logIn({ email, password }));
+    },
+    [dispatch],
+  );
+
   const classes = useStyles();
 
   const [unitEmail, setEmail] = useState('');
@@ -95,7 +94,7 @@ const SignInSide = ({ onLogin }) => {
             }}
           >
             <TextField
-              variant="outlined"
+              multiline
               margin="normal"
               required
               fullWidth
@@ -107,16 +106,7 @@ const SignInSide = ({ onLogin }) => {
               value={unitEmail}
               onChange={event => setEmail(event.target.value)}
             />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+            <InputPassword
               value={unitPassword}
               onChange={event => setPassword(event.target.value)}
             />
@@ -132,7 +122,7 @@ const SignInSide = ({ onLogin }) => {
             </Button>
             <Grid container>
               <Grid item>
-                <NavLink to="/register" variant="body1">
+                <NavLink to="/register" className={s.link}>
                   {"Don't have an account? Sign Up"}
                 </NavLink>
               </Grid>
@@ -145,10 +135,10 @@ const SignInSide = ({ onLogin }) => {
       </Grid>
     </Grid>
   );
-};
+}
 
-const mapDispatchToProps = {
-  onLogin: authOperations.logIn,
-};
+// const mapDispatchToProps = {
+//   onLogin: authOperations.logIn,
+// };
 
-export default connect(null, mapDispatchToProps)(SignInSide);
+// export default connect(null, mapDispatchToProps)(SignInSide);

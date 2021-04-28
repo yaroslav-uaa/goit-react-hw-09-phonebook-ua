@@ -4,19 +4,10 @@ import contactsSelectors from '../../redux/contacts/contacts-selectors';
 import contactsOperations from '../../redux/contacts/contacts-operations';
 import f from './Form.module.css';
 import PropTypes from 'prop-types';
-import { IconButton, TextField } from '@material-ui/core';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-
-// const mapStateToProps = state => ({
-//   contacts: contactsSelectors.getContacts(state),
-// });
-
-// const mapDispatchToProps = {
-//   onSubmit: contactsOperations.addContact,
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Form);
-export default function Form() {
+import { Button, TextField } from '@material-ui/core';
+import { toast } from 'react-toastify';
+import SaveIcon from '@material-ui/icons/Save';
+export default function Form({ handleOpen }) {
   const dispatch = useDispatch();
 
   const contacts = useSelector(contactsSelectors.getContacts);
@@ -48,6 +39,8 @@ export default function Form() {
     OnSubmit({ name: unitName, number: unitNumber });
     setName('');
     setNumber('');
+    toast.info(`Wow! We knew ${unitName}`);
+    handleOpen();
   };
 
   const handleNameChange = ({ target: { name, value } }) => {
@@ -57,9 +50,8 @@ export default function Form() {
   return (
     <form className={f.form} onSubmit={handleSubmit}>
       <TextField
-        multiline
+        className={f.input}
         margin="normal"
-        required
         id="name"
         label="Name"
         name="name"
@@ -67,26 +59,33 @@ export default function Form() {
         autoFocus
         value={unitName}
         onChange={handleNameChange}
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Ім'я може містити тільки букви, апострофи, тире і пробіли. Наприклад Буся, Буся Красотуся, Буся ля Красотуся і т.д."
+        inputProps={{
+          pattern: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+          title:
+            "Ім'я може містити тільки букви, апострофи, тире і пробіли. Наприклад Буся, Буся Красотуся, Буся ля Красотуся і т.д.",
+        }}
+        required
       />
       <TextField
-        multiline
+        className={f.input}
         margin="normal"
-        required
         id="number"
         label="Number"
         name="number"
-        autoComplete="off"
+        autoComplete="true"
         autoFocus
         value={unitNumber}
         onChange={handleNameChange}
-        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-        title="Номер телефона повинен складатися з 11-12 цифр і може містити цифри, пробіли, тире, пузаті скобки і може починатися з +"
+        inputProps={{
+          pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}',
+          title:
+            'Номер телефона повинен складатися з 11-12 цифр і може містити цифри, пробіли, тире, пузаті скобки і може починатися з +',
+        }}
+        required
       />
-      <IconButton type="submit" className={f.btn}>
-        <PersonAddIcon fontSize="large" />
-      </IconButton>
+      <Button type="submit" className={f.btn} startIcon={<SaveIcon />}>
+        Save
+      </Button>
     </form>
   );
 }

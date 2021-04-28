@@ -1,1 +1,1 @@
-export { default } from './Contacts.js';
+export { default } from './ContactsTable';

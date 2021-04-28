@@ -26,8 +26,9 @@ const InputPassword = ({ value, onChange }) => {
 
   return (
     <FormControl fullWidth>
-      <InputLabel>Password</InputLabel>
+      <InputLabel color="secondary">Password</InputLabel>
       <Input
+        color="secondary"
         id="password"
         type={values.showPassword ? 'text' : 'password'}
         value={value}

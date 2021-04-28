@@ -5,13 +5,19 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
-  font-family: 'Lemonada', cursive !important;
+}
+.btnContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.editInput {
+  width: 100%;
+  min-width: 100px;
 }
 
 .btn {
-  font-family: 'Lemonada', cursive !important;
-
-  margin-top: 30px !important;
+  margin-top: 20px !important;
   color: white !important;
   background-color: #424040 !important;
 }

@@ -12,5 +12,16 @@
   color: whitesmoke;
 }
 .activeLink {
-  color: #e84a5f;
+  color: #e84a5f !important;
+}
+.btn {
+  color: inherit !important;
+  padding: 0 !important;
+  background-color: #e84a5f !important;
+}
+
+.btn:hover,
+.btn:focus {
+  color: black !important;
+  background-color: #e84a5f !important;
 }

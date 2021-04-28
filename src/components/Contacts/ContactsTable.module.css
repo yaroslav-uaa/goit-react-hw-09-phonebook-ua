@@ -1,0 +1,29 @@
+p,
+span,
+input,
+li,
+div,
+label {
+  font-family: 'Lemonada', cursive !important;
+}
+
+.th {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  font-weight: 400;
+  font-family: 'Lemonada', cursive !important;
+}
+
+.btn {
+  color: black;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #e84a5f;
+}
+
+.headCell {
+  font-weight: 700;
+  font-family: 'Lemonada', cursive !important;
+}

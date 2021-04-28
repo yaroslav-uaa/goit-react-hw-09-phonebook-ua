@@ -1,17 +1,11 @@
-import Section from '../../components/Section/Section';
-import Form from '../../components/Form/Form';
-import Contacts from '../../components/Contacts/Contacts';
+import EnhancedTable from '../../components/Contacts';
+import c from './ContactView.module.css';
 
 const ContactsView = () => {
   return (
-    <>
-      <Section title="Phonebook">
-        <Form />
-      </Section>
-      <Section title="Contacts">
-        <Contacts />
-      </Section>
-    </>
+    <div className={c.contactContainer}>
+      <EnhancedTable />
+    </div>
   );
 };
 

@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '90%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -94,7 +94,6 @@ export default function SignInSide() {
             }}
           >
             <TextField
-              multiline
               margin="normal"
               required
               fullWidth
@@ -102,6 +101,8 @@ export default function SignInSide() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              type="email"
+              color="secondary"
               autoFocus
               value={unitEmail}
               onChange={event => setEmail(event.target.value)}

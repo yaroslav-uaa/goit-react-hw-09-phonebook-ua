@@ -4,21 +4,21 @@ import a from './AuthNav.module.css';
 
 const AuthNav = () => (
   <div>
-    <NavLink
+    {/* <NavLink
       to="/register"
       exact
       className={a.link}
       activeClassName={a.activeLink}
     >
-      Реєстрація
-    </NavLink>
+      REGISTRATION
+    </NavLink> */}
     <NavLink
       to="/login"
       exact
       className={a.link}
       activeClassName={a.activeLink}
     >
-      Вхід
+      LOGIN
     </NavLink>
   </div>
 );

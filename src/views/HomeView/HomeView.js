@@ -7,18 +7,10 @@ export default function HomeView() {
   const UserName = useSelector(authSelectors.getUserName);
   return (
     <div className={h.container}>
-      <h1 className={h.title}>Велкам ту ауа фелімі</h1>
+      <h1 className={h.title}>Велкам ту ауа феміli</h1>
       <br />
       <p className={h.user}>{UserName}</p>
-      <span role="img" aria-label="Welcome icon">
-        💻𝕵𝕾😎
-      </span>
+      <span role="img" aria-label="Welcome icon"></span>
     </div>
   );
 }
-
-// const mapStateToProps = state => ({
-//   UserName: authSelectors.getUserName(state),
-// });
-
-// export default connect(mapStateToProps)(HomeView);

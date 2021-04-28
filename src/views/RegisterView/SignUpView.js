@@ -108,15 +108,21 @@ export default function SignUpSide() {
             <TextField
               variant="outlined"
               margin="normal"
-              required
               fullWidth
               id="name"
               label="Name"
               name="name"
-              autoComplete="of"
+              autoComplete="false"
               autoFocus
               value={unitName}
               onChange={event => setName(event.target.value)}
+              inputProps={{
+                pattern:
+                  "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+                title:
+                  "Ім'я може містити тільки букви, апострофи, тире і пробіли. Наприклад Буся, Буся Красотуся, Буся ля Красотуся і т.д.",
+              }}
+              required
             />
             <TextField
               variant="outlined"

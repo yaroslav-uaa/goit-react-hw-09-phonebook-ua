@@ -34,6 +34,8 @@ const useStyles = makeStyles(theme => ({
   },
   inputRoot: {
     color: 'inherit',
+    fontFamily: 'Lemonada',
+    fontWeight: 400,
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -46,16 +48,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
-
-// const mapStateToProps = state => ({
-//   filter: contactsSelectors.getFilter(state),
-// });
-
-// const mapDispatchToProps = {
-//   onChange: contactsActions.filterContacts,
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Filter);
 
 export default function Filter() {
   const classes = useStyles();

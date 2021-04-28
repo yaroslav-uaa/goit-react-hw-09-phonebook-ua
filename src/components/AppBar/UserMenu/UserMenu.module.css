@@ -1,17 +1,32 @@
-.container {
+.chip {
+  color: whitesmoke !important;
+  background-color: rgba(252, 184, 202, 0.151) !important;
+  margin-right: 15px !important;
+  font-family: 'Lemonada', cursive !important;
+}
+
+.chip:hover,
+.chip:focus {
+  color: inherit !important;
+  background-color: #e84a5f !important;
+}
+.menu {
   display: flex;
   align-items: center;
 }
 
-.avatar {
-  margin-right: 4px;
+.badge {
+  margin-right: 20px;
 }
 
-.name {
-  font-weight: 500;
-  margin-right: 12px;
+.icon {
+  color: rgb(255, 255, 255) !important;
 }
 
-.btn {
-  margin-right: 8px;
+.styledMenu ul {
+  padding: 0 !important;
+  font-family: 'Lemonada', cursive !important ;
+}
+.btnLogOut {
+  font-family: 'Lemonada', cursive !important ;
 }

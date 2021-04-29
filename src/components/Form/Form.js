@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { Button, TextField } from '@material-ui/core';
 import { toast } from 'react-toastify';
 import SaveIcon from '@material-ui/icons/Save';
+
 export default function Form({ handleOpen }) {
   const dispatch = useDispatch();
 
@@ -74,12 +75,13 @@ export default function Form({ handleOpen }) {
         name="number"
         autoComplete="true"
         autoFocus
+        helperText="093-000-0000"
         value={unitNumber}
         onChange={handleNameChange}
         inputProps={{
-          pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}',
+          pattern: '[+0-9]{6}-[0-9]{3}-[0-9]{4}',
           title:
-            'Номер телефона повинен складатися з 11-12 цифр і може містити цифри, пробіли, тире, пузаті скобки і може починатися з +',
+            'Номер телефона повинен складатися з 11-13 цифр і може містити цифри, пробіли, тире, пузаті скобки і може починатися з +',
         }}
         required
       />

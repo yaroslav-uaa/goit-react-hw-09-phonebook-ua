@@ -39,11 +39,9 @@ export default function EditContacts({ contactForEdit, handleOpen }) {
     [dispatch],
   );
 
-  const updateData = ({ name, number, id }) => {
-    updateContacts({ name, number, id });
-  };
+  const handleSubmit = e => {
+    e.preventDefault();
 
-  const onSave = ({ name, number, id }) => {
     const originName = contacts.find(
       contact =>
         contact.name.toLowerCase() === name.toLowerCase() && contact.id !== id,
@@ -59,7 +57,7 @@ export default function EditContacts({ contactForEdit, handleOpen }) {
       toast.error(`${number} is already used`);
       return;
     }
-    updateData({ name, number, id });
+    updateContacts({ name, number, id });
     onCancel();
   };
 
@@ -71,10 +69,9 @@ export default function EditContacts({ contactForEdit, handleOpen }) {
 
   return (
     <>
-      <form className={c.form}>
+      <form className={c.form} onSubmit={handleSubmit}>
         <TextField
           className={c.editInput}
-          multiline
           margin="normal"
           required
           id="name"
@@ -93,40 +90,32 @@ export default function EditContacts({ contactForEdit, handleOpen }) {
         />
         <TextField
           className={c.editInput}
-          multiline
           margin="normal"
-          required
           id="number"
           label="Number"
           name="number"
           autoComplete="off"
+          type="tel"
           autoFocus
-          value={number}
-          onChange={event => setNumber(event.target.value)}
+          required
+          helperText="093-000-0000"
           inputProps={{
             pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}',
             title:
               'Номер телефона повинен складатися з 11-12 цифр і може містити цифри, пробіли, тире, пузаті скобки і може починатися з +',
           }}
+          value={number}
+          onChange={event => setNumber(event.target.value)}
         />
+        <div className={c.btnContainer}>
+          <IconButton className={c.btn} type="submit">
+            <SaveIcon fontSize="large" />
+          </IconButton>
+          <IconButton className={c.btn} onClick={() => onCancel()}>
+            <CancelIcon fontSize="large" />
+          </IconButton>
+        </div>
       </form>
-      <div className={c.btnContainer}>
-        <IconButton
-          className={c.btn}
-          onClick={() =>
-            onSave({
-              name: name,
-              number: number,
-              id: id,
-            })
-          }
-        >
-          <SaveIcon fontSize="large" />
-        </IconButton>
-        <IconButton className={c.btn} onClick={() => onCancel()}>
-          <CancelIcon fontSize="large" />
-        </IconButton>
-      </div>
     </>
   );
 }

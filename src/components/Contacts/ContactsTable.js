@@ -230,7 +230,7 @@ export default function ContactsTable() {
                         {name}
                       </TableCell>
                       <TableCell className={t.th} id={id} align="right">
-                        {number}
+                        <a href={`tel:${number}`}>{number}</a>
                       </TableCell>
                       <TableCell className={t.th} align="right">
                         <IconButton

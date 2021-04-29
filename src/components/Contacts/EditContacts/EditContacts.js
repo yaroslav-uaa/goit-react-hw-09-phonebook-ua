@@ -67,6 +67,12 @@ export default function EditContacts({ contactForEdit, handleOpen }) {
     handleOpen();
   };
 
+  const phoneRegex = /^\(?([0-9]{3})\)?[-.]?([0-9]{3})[-.]?([0-9]{4})$/;
+
+  const handleInput = number => {
+    return number.replace(phoneRegex, '($1)-$2-$3');
+  };
+
   return (
     <>
       <form className={c.form} onSubmit={handleSubmit}>
@@ -77,7 +83,7 @@ export default function EditContacts({ contactForEdit, handleOpen }) {
           id="name"
           label="Name"
           name="name"
-          autoComplete="off"
+          autoComplete="name"
           autoFocus
           value={name}
           onChange={event => setName(event.target.value)}
@@ -94,18 +100,18 @@ export default function EditContacts({ contactForEdit, handleOpen }) {
           id="number"
           label="Number"
           name="number"
-          autoComplete="off"
+          autoComplete="number"
           type="tel"
           autoFocus
           required
-          helperText="093-000-0000"
+          helperText="xxx-xxx-xxxx"
           inputProps={{
-            pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}',
+            pattern: '[0-9 ()]{5}-[0-9]{3}-[0-9]{4}',
             title:
               'Номер телефона повинен складатися з 11-12 цифр і може містити цифри, пробіли, тире, пузаті скобки і може починатися з +',
           }}
           value={number}
-          onChange={event => setNumber(event.target.value)}
+          onChange={event => setNumber(handleInput(event.target.value))}
         />
         <div className={c.btnContainer}>
           <IconButton className={c.btn} type="submit">

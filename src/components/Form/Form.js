@@ -45,7 +45,13 @@ export default function Form({ handleOpen }) {
   };
 
   const handleNameChange = ({ target: { name, value } }) => {
-    name === 'name' ? setName(value) : setNumber(value);
+    name === 'name' ? setName(value) : setNumber(handleInput(value));
+  };
+
+  const phoneRegex = /^\(?([0-9]{3})\)?[-.]?([0-9]{3})[-.]?([0-9]{4})$/;
+
+  const handleInput = unitNumber => {
+    return unitNumber.replace(phoneRegex, '($1)-$2-$3');
   };
 
   return (
@@ -56,7 +62,7 @@ export default function Form({ handleOpen }) {
         id="name"
         label="Name"
         name="name"
-        autoComplete="off"
+        autoComplete="name"
         autoFocus
         value={unitName}
         onChange={handleNameChange}
@@ -73,13 +79,13 @@ export default function Form({ handleOpen }) {
         id="number"
         label="Number"
         name="number"
-        autoComplete="true"
+        autoComplete="number"
         autoFocus
-        helperText="093-000-0000"
+        helperText="xxx-xxx-xxxx"
         value={unitNumber}
         onChange={handleNameChange}
         inputProps={{
-          pattern: '[+0-9]{6}-[0-9]{3}-[0-9]{4}',
+          pattern: '[0-9()]{5}-[0-9]{3}-[0-9]{4}',
           title:
             'Номер телефона повинен складатися з 11-13 цифр і може містити цифри, пробіли, тире, пузаті скобки і може починатися з +',
         }}

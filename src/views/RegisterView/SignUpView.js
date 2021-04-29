@@ -112,7 +112,7 @@ export default function SignUpSide() {
               id="name"
               label="Name"
               name="name"
-              autoComplete="false"
+              autoComplete="name"
               autoFocus
               value={unitName}
               onChange={event => setName(event.target.value)}

@@ -76,9 +76,3 @@ export default function App() {
     </>
   );
 }
-
-// const mapDispatchToProps = {
-//   onGetCurrentUser: authOperations.getCurrentUser,
-// };
-
-// export default connect(null, mapDispatchToProps)(App);

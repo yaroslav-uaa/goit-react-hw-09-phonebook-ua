@@ -30,11 +30,11 @@ export default function Form({ handleOpen }) {
     );
     const originNumber = contacts.find(({ number }) => number === unitNumber);
     if (originName) {
-      alert(`${unitName} is already used`);
+      toast.error(`${unitName} is already used`);
       return;
     }
     if (originNumber) {
-      alert(`${unitNumber} is already used`);
+      toast.error(`${unitNumber} is already used`);
       return;
     }
     OnSubmit({ name: unitName, number: unitNumber });

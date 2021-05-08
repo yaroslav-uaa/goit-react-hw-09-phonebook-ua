@@ -1,13 +1,10 @@
-import React, { useCallback } from 'react';
-import { useLocation } from 'react-router';
+import { useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import authSelectors from '../../../redux/auth/auth-selectors';
 import authOperations from '../../../redux/auth/auth-operations';
-import contactsSelectors from '../../../redux/contacts/contacts-selectors';
 import Chip from '@material-ui/core/Chip';
 import FaceIcon from '@material-ui/icons/Face';
-import CustomBadge from './CustomBadge/CustomBadge';
 import u from './UserMenu.module.css';
 import { toast } from 'react-toastify';
 import { withStyles } from '@material-ui/core/styles';
@@ -49,12 +46,10 @@ const StyledMenuItem = withStyles(theme => ({
 
 export default function UserMenu() {
   const dispatch = useDispatch();
-  const location = useLocation();
 
   const UserEmail = useSelector(authSelectors.getUserEmail);
-  const totalContacts = useSelector(contactsSelectors.getFilteredTotalContacts);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -71,11 +66,6 @@ export default function UserMenu() {
 
   return (
     <div className={u.menu}>
-      {location.pathname === '/contacts' && (
-        <div className={u.badge}>
-          <CustomBadge className={u.badge} totalContacts={totalContacts} />
-        </div>
-      )}
       <Chip
         className={u.chip}
         aria-controls="fade-menu"

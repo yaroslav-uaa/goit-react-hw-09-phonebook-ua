@@ -1,6 +1,8 @@
 import { Suspense, lazy, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch } from 'react-router';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
+import { Switch, useLocation } from 'react-router';
 import AppBar from './components/AppBar';
 import authOperations from './redux/auth/auth-operations';
 import PrivateRoute from './components/Routes/PrivateRoute';
@@ -10,18 +12,14 @@ import { ToastContainer, cssTransition, toast } from 'react-toastify';
 import 'animate.css/animate.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-import './App.css';
 import authSelectors from './redux/auth/auth-selectors';
 import MyLoader from './components/MyLoader';
+import './App.css';
 
 const HomeView = lazy(() => import('./views/HomeView/HomeView'));
 const SignInView = lazy(() => import('./views/LoginView/SignInView'));
 const SignUpView = lazy(() => import('./views/RegisterView/SignUpView'));
 const ContactsView = lazy(() => import('./views/ContactsView/ContactsView'));
-
-// componentDidMount() {
-//   this.props.onGetCurrentUser();
-// }
 
 const zoomIn = cssTransition({
   enter: 'animate__animated animate__zoomIn',
@@ -29,6 +27,7 @@ const zoomIn = cssTransition({
 });
 
 export default function App() {
+  const location = useLocation();
   const dispatch = useDispatch();
 
   const error = useSelector(authSelectors.getErrorValue);
@@ -48,31 +47,44 @@ export default function App() {
   }, [error, userName]);
 
   return (
-    <>
-      <ToastContainer transition={zoomIn} autoClose={2000} />
+    <div className="container">
+      <ToastContainer transition={zoomIn} autoClose={1500} />
       <AppBar />
       <Suspense fallback={<MyLoader />}>
-        <Switch>
-          <PublicRoute exact path="/" component={HomeView} />
-          <PublicRoute
-            path="/register"
-            restricted
-            redirectTo="/contacts"
-            component={SignUpView}
-          />
-          <PublicRoute
-            path="/login"
-            restricted
-            redirectTo="/contacts"
-            component={SignInView}
-          />
-          <PrivateRoute
-            path="/contacts"
-            redirectTo="/login"
-            component={ContactsView}
-          />
-        </Switch>
+        <TransitionGroup>
+          <CSSTransition timeout={500} classNames="page" key={location.key}>
+            <Switch location={location}>
+              <PublicRoute exact path="/" component={HomeView} />
+
+              <PublicRoute
+                path="/register"
+                restricted
+                redirectTo="/contacts"
+                component={SignUpView}
+              />
+              <PublicRoute
+                path="/login"
+                restricted
+                redirectTo="/contacts"
+                component={SignInView}
+              />
+              <PrivateRoute
+                path="/contacts"
+                redirectTo="/login"
+                component={ContactsView}
+              />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
       </Suspense>
-    </>
+    </div>
   );
 }
+
+/*  <CSSTransition
+   timeout={300}
+   classNames="page"
+   unmountOnExit
+ >
+
+ </CSSTransition>; */

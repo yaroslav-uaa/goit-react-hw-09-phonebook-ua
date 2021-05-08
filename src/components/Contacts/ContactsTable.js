@@ -1,7 +1,9 @@
+//  Main imports
 import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch, useSelector } from 'react-redux';
+
+// Material-UI components
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -11,21 +13,21 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-
+import { makeStyles } from '@material-ui/core/styles';
+// Material-UI icons
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { IconButton } from '@material-ui/core';
-
+// Redux
 import contactsSelectors from '../../redux/contacts/contacts-selectors';
 import contactsOperations from '../../redux/contacts/contacts-operations';
-
-import t from './ContactsTable.module.css';
+// Components & style
 import TransitionsModal from '../Modal/Modal';
 import EditContacts from './EditContacts/EditContacts';
 import MyLoader from '../MyLoader';
+import t from './ContactsTable.module.css';
 
+//
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -52,6 +54,7 @@ function stableSort(array, comparator) {
   return stabilizedThis.map(el => el[0]);
 }
 
+//
 const headCells = [
   { id: 'name', numeric: false, disablePadding: false, label: 'Contacts' },
   { id: 'number', numeric: true, disablePadding: false, label: 'Number' },
@@ -111,7 +114,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2),
   },
   table: {
-    minWidth: 550,
+    minWidth: '450px',
     fontFamily: 'Lemonada cursive !important',
   },
   visuallyHidden: {
@@ -127,7 +130,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-// ! ГОЛОВНА ФУНКЦІЯ   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ! Main Component  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 export default function ContactsTable() {
   const dispatch = useDispatch();
@@ -147,7 +150,6 @@ export default function ContactsTable() {
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('');
   const [page, setPage] = useState(0);
-  const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleRequestSort = (event, property) => {
@@ -165,14 +167,10 @@ export default function ContactsTable() {
     setPage(0);
   };
 
-  const handleChangeDense = event => {
-    setDense(event.target.checked);
-  };
-
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, contacts.length - page * rowsPerPage);
 
-  // ! Функції зміни !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // ! Edit ContactTable
 
   const deleteContact = useCallback(
     id => {
@@ -188,7 +186,7 @@ export default function ContactsTable() {
     handleOpen();
   };
 
-  // ! Modal functions
+  // ! Modal ------------------
 
   const [open, setOpen] = useState(false);
 
@@ -204,7 +202,7 @@ export default function ContactsTable() {
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
-            size={dense ? 'small' : 'medium'}
+            size="medium"
             aria-label="enhanced table"
           >
             <EnhancedTableHead
@@ -257,7 +255,7 @@ export default function ContactsTable() {
                   );
                 })}
               {emptyRows > 0 && (
-                <TableRow style={{ height: (dense ? 32 : 50) * emptyRows }}>
+                <TableRow style={{ height: 50 * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
@@ -274,10 +272,6 @@ export default function ContactsTable() {
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      />
       <TransitionsModal open={open} handleOpen={handleOpen}>
         <EditContacts handleOpen={handleOpen} contactForEdit={contactForEdit} />
       </TransitionsModal>

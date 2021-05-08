@@ -7,21 +7,31 @@
   justify-content: space-between;
   flex-direction: row;
   text-decoration: none;
-  padding: 12px;
+  padding: 12px 10px;
   font-weight: 700;
   color: whitesmoke;
 }
+
+.link:first-child,
+.link:last-child {
+  padding-left: 0px;
+}
+
 .activeLink {
   color: #e84a5f !important;
 }
-.btn {
-  color: inherit !important;
-  padding: 0 !important;
-  background-color: #e84a5f !important;
+
+.Button {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  border-radius: 15px;
+  color: white;
+  background-color: rgba(92, 92, 92, 0.877);
 }
 
-.btn:hover,
-.btn:focus {
-  color: black !important;
-  background-color: #e84a5f !important;
+.Button:active,
+.Button:hover,
+.Button:focus {
+  color: inherit;
+  background-color: #e84a5f;
 }

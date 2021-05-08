@@ -1,8 +1,11 @@
 .header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #2a363b;
   background-color: #2a363b;
   color: blanchedalmond;
+  padding-left: 15px;
+  padding-right: 15px;
 }

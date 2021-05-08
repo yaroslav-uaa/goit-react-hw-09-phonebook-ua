@@ -1,7 +1,6 @@
 .chip {
   color: whitesmoke !important;
   background-color: rgba(252, 184, 202, 0.151) !important;
-  margin-right: 15px !important;
   font-family: 'Lemonada', cursive !important;
 }
 
@@ -13,10 +12,6 @@
 .menu {
   display: flex;
   align-items: center;
-}
-
-.badge {
-  margin-right: 20px;
 }
 
 .icon {

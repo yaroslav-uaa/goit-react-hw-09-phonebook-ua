@@ -5,6 +5,7 @@ li,
 div,
 label {
   font-family: 'Lemonada', cursive !important;
+  color: aliceblue;
 }
 
 .th {
@@ -12,18 +13,27 @@ label {
   padding-right: 15px !important;
   font-weight: 400;
   font-family: 'Lemonada', cursive !important;
+  color: aliceblue;
+  border-bottom: unset;
+  font-weight: 700;
 }
 
-.btn {
-  color: black;
+.th a {
+  color: aliceblue;
+  font-weight: 700;
+}
+.th a:focus {
+  color: #f00827;
 }
 
-.btn:hover,
-.btn:focus {
-  color: #e84a5f;
+.btn span {
+  color: #f3f6f7 !important;
 }
 
 .headCell {
+  color: #ffffff;
+  font-size: 100%;
   font-weight: 700;
   font-family: 'Lemonada', cursive !important;
+  border-bottom: unset;
 }

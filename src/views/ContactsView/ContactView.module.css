@@ -3,6 +3,16 @@
   width: 100%;
   height: 100vh;
   margin: 0 auto;
+  background-image: url(https://source.unsplash.com/Bnk2Aep_li4/1920x1080);
+  background-repeat: repeat;
+  background-position: bottom;
+  background-size: cover;
+}
+
+@media screen and (max-height: 450px) {
+  .contactContainer {
+    height: 160vh;
+  }
 }
 
 .fab {

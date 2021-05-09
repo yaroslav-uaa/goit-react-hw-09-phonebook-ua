@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     height: '90%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
+      marginLeft: theme.spacing(7),
       width: 'auto',
     },
   },

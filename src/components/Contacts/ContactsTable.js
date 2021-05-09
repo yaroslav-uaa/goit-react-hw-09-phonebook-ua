@@ -112,6 +112,7 @@ const useStyles = makeStyles(theme => ({
   paper: {
     width: '100%',
     marginBottom: theme.spacing(2),
+    backgroundColor: 'rgba(42, 54, 59, 0.8)',
   },
   table: {
     minWidth: '450px',
@@ -217,7 +218,13 @@ export default function ContactsTable() {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(({ name, number, id }) => {
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={id}>
+                    <TableRow
+                      style={{ height: '30px' }}
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={id}
+                    >
                       <TableCell
                         className={t.th}
                         component="th"
@@ -255,7 +262,7 @@ export default function ContactsTable() {
                   );
                 })}
               {emptyRows > 0 && (
-                <TableRow style={{ height: 50 * emptyRows }}>
+                <TableRow style={{ height: 10 * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
               )}

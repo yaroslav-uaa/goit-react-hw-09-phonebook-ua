@@ -22,16 +22,16 @@
 }
 
 .Button {
-  margin-top: 6px;
-  margin-bottom: 6px;
-  border-radius: 15px;
-  color: white;
-  background-color: rgba(92, 92, 92, 0.877);
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  border-radius: 15px !important;
+  color: white !important;
+  background-color: rgba(92, 92, 92, 0.877) !important;
 }
 
 .Button:active,
 .Button:hover,
 .Button:focus {
-  color: inherit;
-  background-color: #e84a5f;
+  color: inherit !important;
+  background-color: #e84a5f !important;
 }

@@ -62,7 +62,7 @@ p {
   transition: opacity 500ms, transform 300ms;
 }
 
-/* .page-exit {
+.page-exit {
   opacity: 1;
   transform: scale(1);
 }
@@ -71,4 +71,4 @@ p {
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
-} */
+}

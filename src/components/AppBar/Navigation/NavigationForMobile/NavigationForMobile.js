@@ -86,7 +86,7 @@ export default function NavigationForMobile() {
               </StyledMenuItem>
             </div>
           ) : (
-            <StyledMenuItem>
+            <StyledMenuItem onClick={handleClose}>
               <NavLink
                 to="/contacts"
                 exact

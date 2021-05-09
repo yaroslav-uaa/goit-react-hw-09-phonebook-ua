@@ -7,14 +7,14 @@ const innitialUserState = { name: '', email: '' };
 const user = createReducer(innitialUserState, {
   [authActions.registerSuccess]: (_, { payload }) => payload.user,
   [authActions.logInSuccess]: (_, { payload }) => payload.user,
-  [authActions.logOutSuccess]: () => innitialUserState,
+  [authActions.logOutSuccess]: _ => innitialUserState,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 const token = createReducer(null, {
   [authActions.registerSuccess]: (_, { payload }) => payload.token,
   [authActions.logInSuccess]: (_, { payload }) => payload.token,
-  [authActions.logOutSuccess]: () => null,
+  [authActions.logOutSuccess]: _ => null,
 });
 
 const error = createReducer(null, {

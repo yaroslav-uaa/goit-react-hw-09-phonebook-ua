@@ -48,11 +48,16 @@ export default function App() {
 
   return (
     <div className="container">
-      <ToastContainer transition={zoomIn} autoClose={1500} />
+      <ToastContainer transition={zoomIn} autoClose={1000} />
       <AppBar />
       <Suspense fallback={<MyLoader />}>
         <TransitionGroup>
-          <CSSTransition timeout={500} classNames="page" key={location.key}>
+          <CSSTransition
+            timeout={300}
+            classNames="page"
+            key={location.key}
+            unmountOnExit
+          >
             <Switch location={location}>
               <PublicRoute exact path="/" component={HomeView} />
 

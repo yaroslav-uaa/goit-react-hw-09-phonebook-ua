@@ -5,7 +5,7 @@ import NavigationForMobile from './NavigationForMobile/NavigationForMobile';
 import NavigationForDesktop from './NavigationForDesktop/NavigationForDesktop';
 
 export default function Navigation() {
-  const isTabletOrMobile = useMediaQuery({ maxWidth: 450 });
+  const isTabletOrMobile = useMediaQuery({ maxWidth: 449 });
 
   return (
     <nav className={n.navigation}>

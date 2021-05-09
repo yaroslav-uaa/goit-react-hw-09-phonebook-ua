@@ -87,7 +87,7 @@ export default function UserMenu() {
           <ExitToAppIcon />
           LogOut
         </StyledMenuItem>
-      </StyledMenu>{' '}
+      </StyledMenu>
     </div>
   );
 }

@@ -79,6 +79,7 @@ function EnhancedTableHead(props) {
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
+              className={t.sortHeadCell}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
@@ -111,6 +112,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     width: '100%',
+
     marginBottom: theme.spacing(2),
     backgroundColor: 'rgba(42, 54, 59, 0.8)',
   },

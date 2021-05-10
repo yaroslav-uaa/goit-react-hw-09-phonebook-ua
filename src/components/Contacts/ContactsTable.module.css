@@ -1,9 +1,9 @@
-p,
-span,
-input,
-li,
+.root p,
+.root span,
+.root input,
+.root li,
 div,
-label {
+.root label {
   font-family: 'Lemonada', cursive !important;
   color: aliceblue;
 }

@@ -10,21 +10,21 @@
   background-size: cover;
 }
 .bgimg1 {
-  background-image: url(https://source.unsplash.com/fMD_Cru6OTk/1920x1080);
+  background-image: url(../../img/bgiHV1.jpg);
   min-height: 100vh;
 }
 
 .bgimg2 {
-  background-image: url(https://source.unsplash.com/1NTOQHBRegA/1920x1080);
+  background-image: url(../../img/bgiHV2.jpg);
   min-height: 400px;
 }
 
 .bgimg3 {
-  background-image: url(https://source.unsplash.com/fDsCIIGdw9g/1920x1080);
+  background-image: url(../../img/bgiHV3.jpg);
   min-height: 400px;
 }
 .bgimg4 {
-  background-image: url(https://source.unsplash.com/pUAM5hPaCRI/1920x1080);
+  background-image: url(../../img/bgiHV4.jpg);
   min-height: 100vh;
 }
 

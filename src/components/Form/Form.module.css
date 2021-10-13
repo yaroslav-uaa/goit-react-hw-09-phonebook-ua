@@ -5,11 +5,10 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
-  font-family: 'Lemonada', cursive !important;
 }
 
 .btn {
-  font-family: 'Lemonada', cursive !important;
+  font-family: 'Exo 2', cursive !important;
 
   margin-top: 30px !important;
   color: white !important;

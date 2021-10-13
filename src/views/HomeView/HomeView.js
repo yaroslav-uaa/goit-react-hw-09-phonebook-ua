@@ -35,7 +35,6 @@ export default function HomeView() {
           <span
             className={h.border}
             style={{
-              backgroundColor: 'transparent',
               fontSize: '25px',
               color: '#f7f7f7',
             }}
@@ -65,7 +64,6 @@ export default function HomeView() {
           <span
             className={h.border}
             style={{
-              backgroundColor: 'transparent',
               fontSize: '25px',
               color: '#f7f7f7',
             }}

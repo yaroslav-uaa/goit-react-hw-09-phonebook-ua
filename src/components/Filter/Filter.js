@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
   inputRoot: {
     color: 'inherit',
-    fontFamily: 'Lemonada',
+    fontFamily: 'Exo 2',
     fontWeight: 400,
   },
   inputInput: {

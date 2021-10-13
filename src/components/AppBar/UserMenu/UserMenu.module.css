@@ -1,7 +1,7 @@
 .chip {
   color: whitesmoke !important;
   background-color: rgba(252, 184, 202, 0.151) !important;
-  font-family: 'Lemonada', cursive !important;
+  font-family: 'Exo 2', cursive !important;
 }
 
 .chip:hover,
@@ -20,8 +20,8 @@
 
 .styledMenu ul {
   padding: 0 !important;
-  font-family: 'Lemonada', cursive !important ;
+  font-family: 'Exo 2', cursive !important ;
 }
 .btnLogOut {
-  font-family: 'Lemonada', cursive !important ;
+  font-family: 'Exo 2', cursive !important ;
 }

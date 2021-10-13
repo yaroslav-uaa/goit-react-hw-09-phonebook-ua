@@ -4,14 +4,12 @@
 .root li,
 div,
 .root label {
-  font-family: 'Lemonada', cursive !important;
   color: aliceblue;
 }
 
 .th {
   padding: 0 15px;
   font-weight: 400;
-  font-family: 'Lemonada', cursive !important;
   color: aliceblue;
   border-bottom: unset;
   font-weight: 700;
@@ -33,7 +31,6 @@ div,
   color: #ffffff;
   font-size: 100%;
   font-weight: 700;
-  font-family: 'Lemonada', cursive !important;
   border-bottom: unset;
   padding-top: 10px;
   padding-left: 15px;

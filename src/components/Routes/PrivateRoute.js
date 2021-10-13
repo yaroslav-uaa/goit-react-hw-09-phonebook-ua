@@ -14,7 +14,7 @@ export default function PrivateRoute({
   ...routeProps
 }) {
   const isLogIn = useSelector(authSelectors.getIsLoggedIn);
-
+  console.log(isLogIn);
   return (
     <Route
       {...routeProps}
